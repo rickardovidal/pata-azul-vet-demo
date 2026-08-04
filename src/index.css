@@ -1,0 +1,780 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Sistema de tokens (Tailwind v4 lê isto e gera bg-navy,
+   text-azure-600, font-display, etc. em qualquer componente).
+   Paleta fictícia da marca "Pata Azul" - azul-marinho profundo +
+   verde-azulado (teal) + azure quente, cores típicas do setor
+   veterinário. Ver GUIA-EDICAO-LEIA-ME.md.
+   ============================================================ */
+@theme {
+  --color-navy: #0b3b4d;
+  --color-cream: #f1f8f8;
+
+  --color-azure-50: #eaf4ff;
+  --color-azure-100: #d0e7ff;
+  --color-azure-200: #a3d0ff;
+  --color-azure-300: #70b5ff;
+  --color-azure-400: #3e96ff;
+  --color-azure-500: #1878e8;
+  --color-azure-600: #0f63c4;
+  --color-azure-700: #0c4d99;
+  --color-azure-800: #0a3c78;
+
+  --color-teal-50: #eafbfa;
+  --color-teal-100: #cff4f1;
+  --color-teal-200: #9fe6e1;
+  --color-teal-300: #69d2cb;
+  --color-teal-400: #35b7af;
+  --color-teal-500: #189b93;
+  --color-teal-600: #0e7c7b;
+  --color-teal-700: #0b615f;
+  --color-teal-800: #0a4f4e;
+
+  --font-display: "Baloo 2", sans-serif;
+  --font-body: "Mulish", sans-serif;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+::selection {
+  background-color: #0f63c4;
+  color: #ffffff;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  z-index: 100;
+  background: #0b3b4d;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+}
+.skip-link:focus {
+  left: 1rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2.5px solid #0f63c4;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Cabeçalho flutuante em pílula - a maior diferença visual à
+   primeira vista face às versões anteriores (que usavam uma
+   barra a toda a largura). Encolhe e ganha sombra ao fazer scroll.
+   ============================================================ */
+.pill-header {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 50;
+  margin: 0 auto;
+  max-width: 76rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(11, 59, 77, 0.08);
+  border-radius: 9999px;
+  box-shadow: 0 8px 30px -18px rgba(11, 59, 77, 0.25);
+  transition: box-shadow 0.3s ease, top 0.3s ease, background-color 0.3s ease;
+}
+.pill-header.scrolled {
+  top: 0.6rem;
+  box-shadow: 0 16px 36px -16px rgba(11, 59, 77, 0.35);
+  background: rgba(255, 255, 255, 0.97);
+}
+/* Com o menu móvel aberto, o fundo tem de ficar totalmente opaco - senão o
+   conteúdo colorido do hero por trás transparece através do vidro semi-
+   transparente e "suja" visualmente o logótipo e os links do menu.
+   O border-radius também tem de baixar de 9999px para um valor fixo: com o
+   menu aberto o cabeçalho fica muito mais alto, e 9999px numa caixa alta e
+   estreita é esmagado pelo CSS num raio enorme, que "come" os cantos de
+   cima e deixa a página por trás transparecer atrás do logótipo (era isto,
+   e não a opacidade, que causava o efeito visto no print). */
+.pill-header.menu-open {
+  background: #fff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 2rem;
+}
+
+.nav-link {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0e7c7b;
+  position: relative;
+  padding: 0.4rem 0;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0%;
+  height: 3px;
+  border-radius: 2px;
+  background: #3e96ff;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link.active {
+  color: #0f63c4;
+}
+
+.mobile-link {
+  padding: 0.9rem 0.25rem;
+  font-weight: 700;
+  color: #0e7c7b;
+  border-bottom: 1.5px dashed rgba(14, 124, 123, 0.15);
+}
+.mobile-link.active {
+  color: #0f63c4;
+}
+
+/* ============================================================
+   Botões
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: #0f63c4;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 0 8px 20px -6px rgba(15, 99, 196, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: #0c4d99;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(15, 99, 196, 0.5);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px -6px rgba(15, 99, 196, 0.45);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: #fff;
+  color: #0b3b4d;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(11, 59, 77, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn-secondary:hover {
+  background: #eaf1fb;
+  border-color: rgba(11, 59, 77, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-ghost-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: #0b3b4d;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(11, 59, 77, 0.3);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn-ghost-light:hover {
+  background: rgba(11, 59, 77, 0.06);
+  border-color: #0b3b4d;
+}
+.btn-ghost-light.on-dark {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.btn-ghost-light.on-dark:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+/* ============================================================
+   Texturas e camadas de fundo
+   ============================================================ */
+.dot-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cg fill='%23ffffff' opacity='0.18'%3E%3Cellipse cx='42' cy='52' rx='7.5' ry='6'/%3E%3Cellipse cx='30' cy='35' rx='2.8' ry='3.7'/%3E%3Cellipse cx='37' cy='26' rx='2.8' ry='3.7'/%3E%3Cellipse cx='45' cy='26' rx='2.8' ry='3.7'/%3E%3Cellipse cx='52' cy='35' rx='2.8' ry='3.7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 84px 84px;
+}
+.dot-pattern-navy {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cg fill='%230b3b4d' opacity='0.07'%3E%3Cellipse cx='42' cy='52' rx='7.5' ry='6'/%3E%3Cellipse cx='30' cy='35' rx='2.8' ry='3.7'/%3E%3Cellipse cx='37' cy='26' rx='2.8' ry='3.7'/%3E%3Cellipse cx='45' cy='26' rx='2.8' ry='3.7'/%3E%3Cellipse cx='52' cy='35' rx='2.8' ry='3.7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 84px 84px;
+}
+
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Faixa de apelo à ação: cor sólida (sem gradiente) - mais discreta e
+   menos "genérica" do que um degradé de duas cores. */
+.cta-gradient {
+  background: #0b3b4d;
+}
+
+.wave-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  line-height: 0;
+}
+
+/* Mancha orgânica de cor atrás da ilustração do hero - substitui os
+   círculos desfocados simples das versões anteriores por uma forma
+   única, mais editorial. */
+.hero-blob {
+  border-radius: 62% 38% 55% 45% / 48% 42% 58% 52%;
+}
+
+/* ============================================================
+   Serviços: fichas em formato de "índice numerado" em vez dos
+   cartões com ícone circular usados nas versões anteriores.
+   ============================================================ */
+.service-tile {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(11, 59, 77, 0.08);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.service-tile-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #eaf1fb;
+}
+.service-tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.service-index-media {
+  position: absolute;
+  left: 1rem;
+  bottom: -0.9rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px -4px rgba(11, 59, 77, 0.3);
+  border: 2px solid #fff;
+  margin: 0;
+}
+.service-tile-body {
+  padding: 1.85rem 1.6rem 1.5rem;
+}
+
+.about-photo-card {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+.about-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.about-photo-card .about-photo-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 59, 77, 0.05) 0%, rgba(11, 59, 77, 0.55) 60%, rgba(11, 59, 77, 0.85) 100%);
+}
+.about-photo-card .about-photo-quote {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem;
+  text-align: center;
+}
+.about-photo-card .about-photo-quote .script-accent {
+  color: #fff;
+}
+.service-tile::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #0e7c7b;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+.service-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 36px -16px rgba(11, 59, 77, 0.18);
+}
+.service-tile:hover::before {
+  transform: scaleY(1);
+}
+.service-index {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #3e96ff;
+  letter-spacing: 0.05em;
+}
+.service-tile h3 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0b3b4d;
+  margin-top: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+.service-tile p {
+  color: #3a5273;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Elemento assinatura: percurso "primeira consulta". A linha entre
+   os nós é desenhada com GSAP + ScrollTrigger (ver
+   StepsPrimeiraConsulta.jsx); aqui fica o aspeto estático de base,
+   para o percurso continuar legível mesmo sem JavaScript.
+   ============================================================ */
+.step-node {
+  background: #fff;
+  border: 1px solid rgba(11, 59, 77, 0.08);
+  border-radius: 1.5rem;
+  padding: 2.1rem 1.75rem;
+  box-shadow: 0 4px 18px -6px rgba(11, 59, 77, 0.08);
+  position: relative;
+  z-index: 1;
+}
+.step-number {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 9999px;
+  background: #0b3b4d;
+  color: #fff;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 6px 16px -4px rgba(11, 59, 77, 0.35);
+}
+
+/* ============================================================
+   Testemunhos: um só testemunho em destaque de cada vez (spotlight)
+   em vez da grelha de 3/4 cartões usada nas versões anteriores.
+   ============================================================ */
+.quote-spotlight {
+  background: #fff;
+  border: 1px solid rgba(11, 59, 77, 0.08);
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  box-shadow: 0 24px 48px -24px rgba(11, 59, 77, 0.2);
+  text-align: center;
+}
+.quote-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #0b3b4d, #0e7c7b);
+  color: #fff;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1.25rem;
+}
+.star-row {
+  color: #1878e8;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+}
+
+/* ============================================================
+   Acordeão de perguntas frequentes
+   ============================================================ */
+.faq-item {
+  border: 1px solid rgba(11, 59, 77, 0.1);
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(11, 59, 77, 0.04);
+  overflow: hidden;
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #0b3b4d;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: #eaf1fb;
+  display: grid;
+  place-items: center;
+  color: #0f63c4;
+  transition: transform 0.3s ease;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(135deg);
+  background: #fde8f4;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.5rem;
+  color: #3a5273;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+.faq-item.open .faq-answer {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* ============================================================
+   Formulários
+   ============================================================ */
+.form-label {
+  display: block;
+  font-size: 0.83rem;
+  font-weight: 800;
+  color: #0b3b4d;
+  margin-bottom: 0.4rem;
+}
+.form-input {
+  width: 100%;
+  background: #f1f8f8;
+  border: 2px solid rgba(11, 59, 77, 0.18);
+  border-radius: 0.85rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+  color: #0b3b4d;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-input::placeholder {
+  color: rgba(11, 59, 77, 0.4);
+}
+.form-input:focus {
+  outline: none;
+  border-color: #0f63c4;
+  box-shadow: 0 0 0 3px rgba(15, 99, 196, 0.15);
+}
+
+/* ============================================================
+   Rodapé
+   ============================================================ */
+.footer-heading {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.1rem;
+}
+.social-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.social-icon:hover {
+  background: #0f63c4;
+  border-color: #0f63c4;
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   Contadores, WhatsApp, voltar ao topo, barra fixa móvel
+   ============================================================ */
+.counter-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.whatsapp-fab {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 5.5rem;
+  z-index: 60;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px -6px rgba(37, 211, 102, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.whatsapp-fab:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px -6px rgba(37, 211, 102, 0.6);
+}
+@media (min-width: 1024px) {
+  .whatsapp-fab { bottom: 1.75rem; }
+}
+
+/* Só aparece a partir do ecrã de computador (lg). Em telemóvel fica sempre
+   escondido - o espaço já está ocupado pela barra fixa "Ligar / Marcar
+   Consulta" e pelo botão do WhatsApp. */
+.back-to-top {
+  display: none;
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.75rem;
+  z-index: 60;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: #0b3b4d;
+  color: #fff;
+  place-items: center;
+  box-shadow: 0 8px 20px -6px rgba(11, 59, 77, 0.4);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: #0f63c4;
+}
+@media (min-width: 1024px) {
+  .back-to-top { display: grid; }
+}
+
+/* ===== Aviso "email enviado" (toast) do formulário de contacto - fixo no
+   topo do ecrã, para nunca ficar escondido mais abaixo na página =====  */
+.form-toast {
+  position: fixed;
+  top: 5.5rem;
+  left: 50%;
+  z-index: 150;
+  width: calc(100% - 2.5rem);
+  max-width: 26rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.form-toast.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.form-toast-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #fff;
+  border: 1px solid rgba(11, 59, 77, 0.1);
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+  box-shadow: 0 16px 40px -12px rgba(11, 59, 77, 0.35);
+}
+.form-toast-icon {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.form-toast.success .form-toast-icon { background: #16a34a; }
+.form-toast.error .form-toast-icon { background: #b91c1c; }
+.form-toast-text {
+  font-size: 0.875rem;
+  color: #0b3b4d;
+  line-height: 1.4;
+}
+
+.mobile-cta-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 55;
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.65rem 0.9rem calc(0.65rem + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(11, 59, 77, 0.08);
+  box-shadow: 0 -8px 24px rgba(11, 59, 77, 0.08);
+}
+.mobile-cta-bar a {
+  flex: 1;
+  text-align: center;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+@media (min-width: 1024px) {
+  .mobile-cta-bar { display: none; }
+}
+
+.carousel-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+.carousel-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: rgba(11, 59, 77, 0.15);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+.carousel-dot.active {
+  background: #0f63c4;
+  transform: scale(1.3);
+}
+.carousel-arrow {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background: #fff;
+  border: 1px solid rgba(11, 59, 77, 0.1);
+  box-shadow: 0 4px 14px rgba(11, 59, 77, 0.1);
+  display: grid;
+  place-items: center;
+  color: #0b3b4d;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+.carousel-arrow:hover {
+  background: #0b3b4d;
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.script-accent {
+  font-family: "Caveat", cursive;
+  color: #3e96ff;
+}
+
+/* Faixa de confiança do hero (ícone sempre ao lado do texto, nunca por cima) */
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.trust-item svg {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Modal de consentimento de cookies (RGPD)
+   ============================================================ */
+.cookie-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(11, 59, 77, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+.cookie-modal-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 26rem;
+  width: 100%;
+  box-shadow: 0 30px 60px -20px rgba(11, 59, 77, 0.35);
+}
+
+.floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floaty { animation: none !important; }
+}

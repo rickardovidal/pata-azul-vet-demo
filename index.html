@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título e descrição por defeito: cada página troca isto via <SEO> (ver src/components/SEO.jsx) -->
+    <title>Pata Azul - Clínica Veterinária (projeto fictício)</title>
+    <meta name="description" content="Pata Azul é uma clínica veterinária fictícia, criada como peça de portefólio. Consultas, vacinação, cirurgia, banhos e atendimento ao domicílio." />
+
+    <!-- "Pata Azul" é uma marca inventada para fins de portefólio, sem negócio real por trás -
+         mantemos os motores de busca de fora para não gerar confusão. -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Caveat:wght@600;700&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="font-body bg-cream text-navy antialiased">
+    <div id="root"></div>
+
+    <!-- Formulário escondido, só para o Netlify detetar os campos no build (o site é uma SPA em
+         React, por isso o <form> real só existe depois do JavaScript correr - ver Contacto.jsx e
+         GUIA-EDICAO-LEIA-ME.md, ponto 3). Nunca aparece visível a ninguém. -->
+    <form name="contacto" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="text" name="nome" />
+      <input type="tel" name="telefone" />
+      <input type="email" name="email" />
+      <input type="text" name="assunto" />
+      <textarea name="mensagem"></textarea>
+      <input type="checkbox" name="consentimento" />
+      <input name="bot-field" />
+    </form>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
