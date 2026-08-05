@@ -4,22 +4,23 @@
    Sistema de tokens (Tailwind v4 lê isto e gera bg-navy,
    text-azure-600, font-display, etc. em qualquer componente).
    Paleta fictícia da marca "Pata Azul" - azul-marinho profundo +
-   verde-azulado (teal) + azure quente, cores típicas do setor
-   veterinário. Ver GUIA-EDICAO-LEIA-ME.md.
+   verde-azulado (teal) + azul acinzentado (azure), num registo mais
+   institucional/corporativo do que o azul-céu vivo usado antes -
+   ver GUIA-EDICAO-LEIA-ME.md.
    ============================================================ */
 @theme {
   --color-navy: #0b3b4d;
-  --color-cream: #f1f8f8;
+  --color-cream: #f7f4ee;
 
-  --color-azure-50: #eaf4ff;
-  --color-azure-100: #d0e7ff;
-  --color-azure-200: #a3d0ff;
-  --color-azure-300: #70b5ff;
-  --color-azure-400: #3e96ff;
-  --color-azure-500: #1878e8;
-  --color-azure-600: #0f63c4;
-  --color-azure-700: #0c4d99;
-  --color-azure-800: #0a3c78;
+  --color-azure-50: #eef3f8;
+  --color-azure-100: #d9e5f0;
+  --color-azure-200: #b3cbe0;
+  --color-azure-300: #86a9c9;
+  --color-azure-400: #5c86ac;
+  --color-azure-500: #3d6690;
+  --color-azure-600: #2f5170;
+  --color-azure-700: #26415a;
+  --color-azure-800: #1e3347;
 
   --color-teal-50: #eafbfa;
   --color-teal-100: #cff4f1;
@@ -31,7 +32,7 @@
   --color-teal-700: #0b615f;
   --color-teal-800: #0a4f4e;
 
-  --font-display: "Baloo 2", sans-serif;
+  --font-display: "Fraunces", serif;
   --font-body: "Mulish", sans-serif;
 }
 
@@ -49,7 +50,7 @@ body {
 }
 
 ::selection {
-  background-color: #0f63c4;
+  background-color: #2f5170;
   color: #ffffff;
 }
 
@@ -73,7 +74,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2.5px solid #0f63c4;
+  outline: 2.5px solid #2f5170;
   outline-offset: 2px;
 }
 
@@ -94,7 +95,7 @@ select:focus-visible {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(11, 59, 77, 0.08);
-  border-radius: 9999px;
+  border-radius: 1.1rem;
   box-shadow: 0 8px 30px -18px rgba(11, 59, 77, 0.25);
   transition: box-shadow 0.3s ease, top 0.3s ease, background-color 0.3s ease;
 }
@@ -105,17 +106,12 @@ select:focus-visible {
 }
 /* Com o menu móvel aberto, o fundo tem de ficar totalmente opaco - senão o
    conteúdo colorido do hero por trás transparece através do vidro semi-
-   transparente e "suja" visualmente o logótipo e os links do menu.
-   O border-radius também tem de baixar de 9999px para um valor fixo: com o
-   menu aberto o cabeçalho fica muito mais alto, e 9999px numa caixa alta e
-   estreita é esmagado pelo CSS num raio enorme, que "come" os cantos de
-   cima e deixa a página por trás transparecer atrás do logótipo (era isto,
-   e não a opacidade, que causava o efeito visto no print). */
+   transparente e "suja" visualmente o logótipo e os links do menu. */
 .pill-header.menu-open {
   background: #fff;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-radius: 2rem;
+  border-radius: 1.1rem;
 }
 
 .nav-link {
@@ -131,9 +127,8 @@ select:focus-visible {
   left: 0;
   bottom: -1px;
   width: 0%;
-  height: 3px;
-  border-radius: 2px;
-  background: #3e96ff;
+  height: 2px;
+  background: #3d6690;
   transition: width 0.25s ease;
 }
 .nav-link:hover::after,
@@ -141,7 +136,7 @@ select:focus-visible {
   width: 100%;
 }
 .nav-link.active {
-  color: #0f63c4;
+  color: #2f5170;
 }
 
 .mobile-link {
@@ -151,7 +146,7 @@ select:focus-visible {
   border-bottom: 1.5px dashed rgba(14, 124, 123, 0.15);
 }
 .mobile-link.active {
-  color: #0f63c4;
+  color: #2f5170;
 }
 
 /* ============================================================
@@ -162,26 +157,26 @@ select:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  background: #0f63c4;
+  background: #2f5170;
   color: #fff;
   font-weight: 700;
   font-size: 0.95rem;
   padding: 0.85rem 1.85rem;
-  border-radius: 9999px;
+  border-radius: 0.6rem;
   border: none;
-  box-shadow: 0 8px 20px -6px rgba(15, 99, 196, 0.45);
+  box-shadow: 0 6px 16px -6px rgba(47, 81, 112, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   white-space: nowrap;
   cursor: pointer;
 }
 .btn-primary:hover {
-  background: #0c4d99;
+  background: #26415a;
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -6px rgba(15, 99, 196, 0.5);
+  box-shadow: 0 10px 20px -6px rgba(47, 81, 112, 0.45);
 }
 .btn-primary:active {
   transform: translateY(0);
-  box-shadow: 0 6px 14px -6px rgba(15, 99, 196, 0.45);
+  box-shadow: 0 4px 12px -6px rgba(47, 81, 112, 0.4);
 }
 
 .btn-secondary {
@@ -194,12 +189,12 @@ select:focus-visible {
   font-weight: 700;
   font-size: 0.95rem;
   padding: 0.85rem 1.85rem;
-  border-radius: 9999px;
+  border-radius: 0.6rem;
   border: 1.5px solid rgba(11, 59, 77, 0.2);
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 .btn-secondary:hover {
-  background: #eaf1fb;
+  background: #eef1f4;
   border-color: rgba(11, 59, 77, 0.35);
   transform: translateY(-2px);
 }
@@ -214,7 +209,7 @@ select:focus-visible {
   font-weight: 700;
   font-size: 0.95rem;
   padding: 0.85rem 1.85rem;
-  border-radius: 9999px;
+  border-radius: 0.6rem;
   border: 1.5px solid rgba(11, 59, 77, 0.3);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -271,11 +266,12 @@ select:focus-visible {
   line-height: 0;
 }
 
-/* Mancha orgânica de cor atrás da ilustração do hero - substitui os
-   círculos desfocados simples das versões anteriores por uma forma
-   única, mais editorial. */
-.hero-blob {
-  border-radius: 62% 38% 55% 45% / 48% 42% 58% 52%;
+/* Moldura fina atrás da fotografia do hero e do PageHero - substitui a
+   mancha gradiente orgânica (efeito "blob" demasiado associado a
+   layouts genéricos de IA) por um traço geométrico contido, no
+   registo mais institucional/editorial pedido para o site. */
+.frame-accent {
+  border: 1.5px solid rgba(11, 59, 77, 0.18);
 }
 
 /* ============================================================
@@ -286,7 +282,7 @@ select:focus-visible {
   position: relative;
   background: #fff;
   border: 1px solid rgba(11, 59, 77, 0.08);
-  border-radius: 1.25rem;
+  border-radius: 0.85rem;
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -321,7 +317,7 @@ select:focus-visible {
 
 .about-photo-card {
   position: relative;
-  border-radius: 2rem;
+  border-radius: 1rem;
   overflow: hidden;
 }
 .about-photo-card img {
@@ -343,7 +339,7 @@ select:focus-visible {
   padding: 2rem;
   text-align: center;
 }
-.about-photo-card .about-photo-quote .script-accent {
+.about-photo-card .about-photo-quote .accent-serif {
   color: #fff;
 }
 .service-tile::before {
@@ -366,14 +362,14 @@ select:focus-visible {
   transform: scaleY(1);
 }
 .service-index {
-  font-family: "Baloo 2", sans-serif;
-  font-weight: 800;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
   font-size: 0.85rem;
-  color: #3e96ff;
+  color: #3d6690;
   letter-spacing: 0.05em;
 }
 .service-tile h3 {
-  font-family: "Baloo 2", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: #0b3b4d;
@@ -395,7 +391,7 @@ select:focus-visible {
 .step-node {
   background: #fff;
   border: 1px solid rgba(11, 59, 77, 0.08);
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   padding: 2.1rem 1.75rem;
   box-shadow: 0 4px 18px -6px rgba(11, 59, 77, 0.08);
   position: relative;
@@ -407,7 +403,7 @@ select:focus-visible {
   border-radius: 9999px;
   background: #0b3b4d;
   color: #fff;
-  font-family: "Baloo 2", sans-serif;
+  font-family: "Fraunces", serif;
   font-weight: 800;
   font-size: 1.3rem;
   display: grid;
@@ -417,31 +413,29 @@ select:focus-visible {
 }
 
 /* ============================================================
-   Testemunhos: um só testemunho em destaque de cada vez (spotlight)
-   em vez da grelha de 3/4 cartões usada nas versões anteriores.
+   Testemunhos: cartões editoriais com uma aspa tipográfica grande
+   em vez do avatar circular com gradiente e iniciais (ver
+   TestimonialCarousel.jsx) - mais discreto e institucional.
    ============================================================ */
-.quote-spotlight {
+.testimonial-card {
+  position: relative;
   background: #fff;
   border: 1px solid rgba(11, 59, 77, 0.08);
-  border-radius: 2rem;
-  padding: 3rem 2rem;
-  box-shadow: 0 24px 48px -24px rgba(11, 59, 77, 0.2);
-  text-align: center;
+  border-radius: 0.85rem;
+  padding: 2.25rem 1.85rem 1.85rem;
+  box-shadow: 0 4px 18px -8px rgba(11, 59, 77, 0.1);
+  height: 100%;
 }
-.quote-avatar {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, #0b3b4d, #0e7c7b);
-  color: #fff;
-  font-family: "Baloo 2", sans-serif;
-  font-weight: 700;
-  display: grid;
-  place-items: center;
-  margin: 0 auto 1.25rem;
+.quote-mark {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 3.25rem;
+  line-height: 1;
+  color: #b3cbe0;
+  margin-bottom: 0.25rem;
 }
 .star-row {
-  color: #1878e8;
+  color: #b08d3f;
   font-size: 0.95rem;
   letter-spacing: 0.15em;
 }
@@ -451,7 +445,7 @@ select:focus-visible {
    ============================================================ */
 .faq-item {
   border: 1px solid rgba(11, 59, 77, 0.1);
-  border-radius: 1.25rem;
+  border-radius: 0.85rem;
   background: #fff;
   box-shadow: 0 2px 10px rgba(11, 59, 77, 0.04);
   overflow: hidden;
@@ -464,8 +458,8 @@ select:focus-visible {
   gap: 1rem;
   padding: 1.25rem 1.5rem;
   text-align: left;
-  font-family: "Baloo 2", sans-serif;
-  font-weight: 700;
+  font-family: "Fraunces", serif;
+  font-weight: 600;
   font-size: 1.05rem;
   color: #0b3b4d;
   background: transparent;
@@ -477,15 +471,15 @@ select:focus-visible {
   width: 2rem;
   height: 2rem;
   border-radius: 9999px;
-  background: #eaf1fb;
+  background: #eef1f4;
   display: grid;
   place-items: center;
-  color: #0f63c4;
+  color: #2f5170;
   transition: transform 0.3s ease;
 }
 .faq-item.open .faq-icon {
   transform: rotate(135deg);
-  background: #fde8f4;
+  background: #d9e5f0;
 }
 .faq-answer {
   max-height: 0;
@@ -525,15 +519,15 @@ select:focus-visible {
 }
 .form-input:focus {
   outline: none;
-  border-color: #0f63c4;
-  box-shadow: 0 0 0 3px rgba(15, 99, 196, 0.15);
+  border-color: #2f5170;
+  box-shadow: 0 0 0 3px rgba(47, 81, 112, 0.15);
 }
 
 /* ============================================================
    Rodapé
    ============================================================ */
 .footer-heading {
-  font-family: "Baloo 2", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: #fff;
@@ -551,8 +545,8 @@ select:focus-visible {
   transition: background-color 0.25s ease, transform 0.25s ease;
 }
 .social-icon:hover {
-  background: #0f63c4;
-  border-color: #0f63c4;
+  background: #2f5170;
+  border-color: #2f5170;
   transform: translateY(-3px);
 }
 
@@ -615,7 +609,7 @@ select:focus-visible {
   pointer-events: auto;
 }
 .back-to-top:hover {
-  background: #0f63c4;
+  background: #2f5170;
 }
 @media (min-width: 1024px) {
   .back-to-top { display: grid; }
@@ -710,7 +704,7 @@ select:focus-visible {
   cursor: pointer;
 }
 .carousel-dot.active {
-  background: #0f63c4;
+  background: #2f5170;
   transform: scale(1.3);
 }
 .carousel-arrow {
@@ -732,9 +726,13 @@ select:focus-visible {
   transform: scale(1.06);
 }
 
-.script-accent {
-  font-family: "Caveat", cursive;
-  color: #3e96ff;
+/* Ênfase editorial em serifa itálica - substitui o antigo acento cursivo
+   (fonte "Caveat"), demasiado informal/infantil para o registo pretendido. */
+.accent-serif {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  color: inherit;
 }
 
 /* Faixa de confiança do hero (ícone sempre ao lado do texto, nunca por cima) */
@@ -761,20 +759,9 @@ select:focus-visible {
 }
 .cookie-modal-card {
   background: #fff;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   padding: 2rem;
   max-width: 26rem;
   width: 100%;
   box-shadow: 0 30px 60px -20px rgba(11, 59, 77, 0.35);
-}
-
-.floaty {
-  animation: floaty 7s ease-in-out infinite;
-}
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .floaty { animation: none !important; }
 }

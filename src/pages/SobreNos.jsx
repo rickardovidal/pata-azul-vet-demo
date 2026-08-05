@@ -37,7 +37,7 @@ export default function SobreNos() {
                 Damos valor à singularidade de cada animal e procuramos cuidados personalizados que garantam uma vida longa, saudável e feliz aos nossos pacientes - sejam cães, gatos, coelhos, aves ou outros animais de estimação.
               </p>
               <blockquote className="mt-8 border-l-4 border-azure-400 pl-5">
-                <p className="script-accent text-3xl leading-tight">"Saúde e bem-estar para os seus companheiros de sempre."</p>
+                <p className="accent-serif text-3xl leading-tight">"Saúde e bem-estar para os seus companheiros de sempre."</p>
               </blockquote>
             </Reveal>
 
@@ -49,7 +49,7 @@ export default function SobreNos() {
                 </picture>
                 <div className="about-photo-scrim" aria-hidden="true"></div>
                 <div className="about-photo-quote">
-                  <p className="script-accent text-white text-3xl leading-snug">"Obrigado pela confiança em entregar-nos o cuidado do seu melhor amigo."</p>
+                  <p className="accent-serif text-white text-3xl leading-snug">"Obrigado pela confiança em entregar-nos o cuidado do seu melhor amigo."</p>
                   <p className="mt-4 text-teal-200 text-xs font-bold uppercase tracking-[0.2em]">Pata Azul</p>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default function SobreNos() {
 
       <section className="py-14">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <Reveal className="cta-gradient text-white rounded-[2.5rem] px-8 py-12 sm:px-16 text-center relative overflow-hidden grain">
+          <Reveal className="cta-gradient text-white rounded-2xl px-8 py-12 sm:px-16 text-center relative overflow-hidden grain">
             <div className="relative">
               <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">Venha conhecer-nos</h2>
               <p className="mt-4 text-white/85 max-w-lg mx-auto">Estamos prontos para cuidar do seu animal, sempre que precisar.</p>

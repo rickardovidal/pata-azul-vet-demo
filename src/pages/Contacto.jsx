@@ -167,7 +167,7 @@ export default function Contacto() {
               <p className="mb-4 text-xs font-bold text-azure-600 text-center">
                 Projeto de demonstração para portefólio: os dados submetidos aqui não são processados por nenhuma clínica real.
               </p>
-              <form name="contacto" onSubmit={handleSubmit} className="bg-white border border-navy/10 rounded-[1.75rem] p-7 sm:p-9 shadow-xl shadow-navy/5">
+              <form name="contacto" onSubmit={handleSubmit} className="bg-white border border-navy/10 rounded-2xl p-7 sm:p-9 shadow-xl shadow-navy/5">
                 <p className="hidden">
                   <label>Não preencher: <input name="bot-field" /></label>
                 </p>

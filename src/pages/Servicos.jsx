@@ -49,7 +49,7 @@ export default function Servicos() {
 
       <section className="py-14">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <Reveal className="cta-gradient text-white rounded-[2.5rem] px-8 py-12 sm:px-16 text-center relative overflow-hidden grain">
+          <Reveal className="cta-gradient text-white rounded-2xl px-8 py-12 sm:px-16 text-center relative overflow-hidden grain">
             <div className="relative">
               <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">Marque a sua consulta</h2>
               <p className="mt-4 text-white/85 max-w-lg mx-auto">Não hesite em contactar-nos para esclarecer qualquer dúvida sobre a saúde do seu animal.</p>

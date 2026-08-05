@@ -17,9 +17,6 @@ export default function Home() {
 
       {/* ===================== ABERTURA (HERO) ===================== */}
       <section className="relative pt-28 pb-20 lg:pt-32 lg:pb-24 overflow-hidden bg-cream">
-        <div className="hero-blob absolute -top-24 -right-32 w-[32rem] h-[32rem] bg-teal-100/80 blur-[2px]" aria-hidden="true" />
-        <div className="hero-blob absolute -bottom-32 -left-24 w-72 h-72 bg-azure-100/60" aria-hidden="true" />
-
         <div className="max-w-7xl mx-auto px-5 sm:px-8 relative">
           <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-14 items-center">
             <Reveal>
@@ -29,7 +26,7 @@ export default function Home() {
               </div>
 
               <h1 className="font-display mt-4 text-[2.6rem] leading-[1.08] sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-navy">
-                Saúde e bem‑estar para os seus <span className="script-accent text-5xl sm:text-6xl lg:text-7xl">companheiros de sempre</span>
+                Saúde e bem‑estar para os seus <span className="accent-serif text-5xl sm:text-6xl lg:text-7xl">companheiros de sempre</span>
               </h1>
 
               <p className="mt-6 text-lg text-slate-600 max-w-xl leading-relaxed">
@@ -46,24 +43,25 @@ export default function Home() {
 
               <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
                 <div className="trust-item text-navy/80">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0f63c4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f5170" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
                   Atendimento ao domicílio
                 </div>
                 <div className="trust-item text-navy/80">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0f63c4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f5170" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
                   Petsitting disponível
                 </div>
                 <div className="trust-item text-navy/80">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0f63c4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f5170" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
                   Resposta rápida por WhatsApp
                 </div>
               </div>
             </Reveal>
 
-            <Reveal delay={0.12} className="mt-10 lg:mt-0 max-w-[400px] sm:max-w-md lg:max-w-md mx-auto lg:mx-0 lg:ml-auto">
+            <Reveal delay={0.12} className="relative mt-10 lg:mt-0 max-w-[400px] sm:max-w-md lg:max-w-md mx-auto lg:mx-0 lg:ml-auto">
+              <div className="frame-accent absolute -top-4 -right-4 w-full h-full rounded-lg hidden sm:block" aria-hidden="true" />
               <picture>
                 <source srcSet="/assets/hero/hero-bulldog-cat.webp" type="image/webp" />
-                <img src="/assets/hero/hero-bulldog-cat.png" alt="Bulldog francês e gato tabby, amigos, lado a lado" className="w-full h-auto" />
+                <img src="/assets/hero/hero-bulldog-cat.png" alt="Bulldog francês e gato tabby, amigos, lado a lado" className="relative w-full h-auto" />
               </picture>
             </Reveal>
           </div>
@@ -121,7 +119,7 @@ export default function Home() {
                 </picture>
                 <div className="about-photo-scrim" aria-hidden="true"></div>
                 <div className="about-photo-quote">
-                  <p className="script-accent text-white text-3xl leading-snug">"Tratamos cada animal como se fosse nosso."</p>
+                  <p className="accent-serif text-white text-3xl leading-snug">"Tratamos cada animal como se fosse nosso."</p>
                   <p className="mt-4 text-teal-200 text-xs font-bold uppercase tracking-[0.2em]">Pata Azul</p>
                 </div>
               </div>
@@ -157,7 +155,7 @@ export default function Home() {
       {/* ===================== FAIXA DE APELO À AÇÃO ===================== */}
       <section className="py-14">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <Reveal className="cta-gradient text-white rounded-[2.5rem] px-8 py-12 sm:px-16 text-center relative overflow-hidden grain">
+          <Reveal className="cta-gradient text-white rounded-2xl px-8 py-12 sm:px-16 text-center relative overflow-hidden grain">
             <div className="relative">
               <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">Não hesite em contactar-nos</h2>
               <p className="mt-4 text-white/85 max-w-lg mx-auto">Para marcar uma consulta ou esclarecer qualquer dúvida sobre a saúde do seu animal.</p>

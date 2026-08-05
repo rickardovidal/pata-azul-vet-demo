@@ -6,7 +6,6 @@ import Reveal from "./Reveal";
 export default function PageHero({ eyebrow = "Clínica Veterinária", title, subtitle }) {
   return (
     <section className="relative pt-36 pb-16 lg:pt-44 lg:pb-20 overflow-hidden bg-cream">
-      <div className="hero-blob absolute -top-20 -right-28 w-96 h-96 bg-gradient-to-br from-azure-200/60 to-teal-200/50" aria-hidden="true" />
       <div className="max-w-4xl mx-auto px-5 sm:px-8 relative text-center">
         <Reveal>
           <p className="text-azure-600 font-bold tracking-wide uppercase text-sm mb-2">{eyebrow}</p>

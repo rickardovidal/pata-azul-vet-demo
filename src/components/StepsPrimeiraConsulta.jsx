@@ -44,7 +44,7 @@ export default function StepsPrimeiraConsulta() {
         aria-hidden="true"
       >
         <path d="M 100 20 L 600 20 L 1100 20" fill="none" stroke="#0b3b4d" strokeOpacity="0.12" strokeWidth="3" strokeLinecap="round" />
-        <path ref={pathRef} d="M 100 20 L 600 20 L 1100 20" fill="none" stroke="#0f63c4" strokeWidth="3" strokeLinecap="round" />
+        <path ref={pathRef} d="M 100 20 L 600 20 L 1100 20" fill="none" stroke="#2f5170" strokeWidth="3" strokeLinecap="round" />
       </svg>
 
       <div className="grid lg:grid-cols-3 gap-8 relative">
