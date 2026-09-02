@@ -1,16 +1,58 @@
-# React + Vite
+# Pata Azul — site de clínica veterinária
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Site institucional de uma clínica veterinária **fictícia**, criado como peça de
+portefólio. Demonstra a construção de um site montra completo para um pequeno
+negócio: identidade própria, várias páginas, formulário de contacto,
+conformidade legal e animação.
 
-Currently, two official plugins are available:
+**Demo:** https://pataazul.netlify.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Pata Azul](public/logo.png)
 
-## React Compiler
+## O que inclui
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Páginas:** Início, Serviços, Sobre Nós, Contacto, 404, e as páginas legais
+  (Política de Privacidade, Política de Cookies, Resolução de Litígios).
+- **Formulário de contacto** funcional via EmailJS (chaves como *placeholder* —
+  o projeto é fictício).
+- **Consentimento de cookies** com preferências e bloqueio de scripts até aceitação.
+- **SEO** por página (título, descrição e Open Graph) com `react-helmet-async`.
+- **Acessibilidade:** *skip link*, `lang="pt-PT"`, foco visível, contraste e
+  navegação por teclado.
+- **Animação de scroll** com GSAP (componente `Reveal`) e contadores animados.
+- **Rotas com *code splitting*** — só a Home entra no *bundle* inicial; as
+  restantes páginas carregam quando o visitante lá navega.
+- Barra de CTA fixa em telemóvel e botão de WhatsApp.
 
-## Expanding the Oxlint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Área | Tecnologias |
+|---|---|
+| Frontend | React 19, React Router 7, Vite |
+| Estilo | Tailwind CSS 4 |
+| Animação | GSAP |
+| Email | EmailJS |
+| SEO | react-helmet-async |
+| Lint | Oxlint |
+
+## Correr localmente
+
+```bash
+npm install
+npm run dev       # arranca em http://localhost:5173
+npm run build     # build de produção para dist/
+npm run preview   # pré-visualizar o build
+```
+
+Para ativar o envio de emails, preencher as chaves em
+`src/lib/emailConfig.js` com uma conta EmailJS.
+
+## Nota
+
+A Pata Azul não é um negócio real. Todo o conteúdo, marca e imagens servem
+apenas para demonstrar o trabalho.
+
+---
+
+Ricardo Vidal · [byrvidal.digital](https://byrvidal.digital) ·
+[linkedin.com/in/vidal-ricardo](https://www.linkedin.com/in/vidal-ricardo)
