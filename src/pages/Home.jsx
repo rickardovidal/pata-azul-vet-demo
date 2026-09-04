@@ -58,10 +58,9 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={0.12} className="relative mt-10 lg:mt-0 max-w-[400px] sm:max-w-md lg:max-w-md mx-auto lg:mx-0 lg:ml-auto">
-              <div className="frame-accent absolute -top-4 -right-4 w-full h-full rounded-lg hidden sm:block" aria-hidden="true" />
               <picture>
                 <source srcSet="/assets/hero/hero-bulldog-cat.webp" type="image/webp" />
-                <img src="/assets/hero/hero-bulldog-cat.png" alt="Bulldog francês e gato tabby, amigos, lado a lado" className="relative w-full h-auto" />
+                <img src="/assets/hero/hero-bulldog-cat.png" alt="Bulldog francês e gato tabby, amigos, lado a lado" className="w-full h-auto" />
               </picture>
             </Reveal>
           </div>
